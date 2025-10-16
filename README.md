@@ -1,6 +1,6 @@
 # Millennium Apps Buttons
 
-<img width="680" height="260" alt="Millennium-apps-buttons-sc1" src="https://github.com/user-attachments/assets/4174cbff-6f1e-4299-b6da-4aafce90690d" />
+<img width="661" height="228" alt="Millennium-apps-buttons-sc1" src="https://github.com/user-attachments/assets/b21fcc2e-1dbc-4a4b-9f26-e41ca94e2b81" />
 
 ## Prerequisites
 - [Millennium](https://steambrew.app/)
