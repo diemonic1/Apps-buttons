@@ -1,25 +1,32 @@
 {
     "links": [
         {
-            "name": "EGS 1",
+            "name": "Settings",
             "show_name": "true",
-            "icon": "https://raw.githubusercontent.com/diemonic1/CatPilot/refs/heads/main/CatPilot.png",
+            "icon": "https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/settings.png",
             "show_icon": "true",
-            "path_to_app": "S:\\Programs\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"
+            "path_to_app": "explorer C:\\PROGRA~2\\Steam\\plugins\\millennium-apps-buttons /MAX"
         },
         {
-            "name": "EGS 2",
+            "name": "Steam",
             "show_name": "false",
-            "icon": "https://raw.githubusercontent.com/diemonic1/CatPilot/refs/heads/main/CatPilot.ico",
+            "icon": "https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/steam.png",
             "show_icon": "true",
-            "path_to_app": "S:\\Programs\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"
+            "path_to_app": "explorer https://store.steampowered.com/"
         },
         {
-            "name": "EGS 3",
+            "name": "SteamDB",
             "show_name": "true",
-            "icon": "",
+            "icon": "https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/steamDB.png",
+            "show_icon": "true",
+            "path_to_app": "explorer https://steamdb.info/"
+        },
+        {
+            "name": "SteamGridDB",
+            "show_name": "true",
+            "icon": "https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/steamGridDB.png",
             "show_icon": "false",
-            "path_to_app": "S:\\Programs\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"
+            "path_to_app": "explorer https://www.steamgriddb.com/"
         }
     ]
 }

@@ -47,13 +47,8 @@ async function OnPopupCreation(popup: any) {
                 const style = popup.m_popup.document.createElement("style");
                 style.textContent = `
                     .millennium-apps-buttons {
-                        z-index: 1000;
-                        cursor: pointer;
                         margin-right: 9px;
-                        -webkit-app-region: no-drag;
-                        user-select: none;
                         padding: 0px 3px;
-                        pointer-events: auto;
                         border-radius: 2px;
                         height: 24px;
                         background-color: rgba(103, 112, 123, .2);
@@ -62,6 +57,16 @@ async function OnPopupCreation(popup: any) {
                     }
                     .millennium-apps-buttons:hover {
                         background-color: rgba(103, 112, 123, 0.5);
+                    }
+                    .millennium-apps-buttons-inner-div {
+                        z-index: 1000;
+                        pointer-events: auto;
+                        -webkit-app-region: no-drag;
+                        user-select: none;
+                        display: flex;
+                        align-items: center;
+                        padding: 0px 5px;
+                        cursor: pointer;
                     }
                 `;
                 popup.m_popup.document.head.appendChild(style);
@@ -81,11 +86,7 @@ async function OnPopupCreation(popup: any) {
                     if (link.show_name == "true" && link.show_icon == "true"){
                         newElement.innerHTML = `
                             <div
-                                style="
-                                    display: flex;
-                                    align-items: center;
-                                    padding: 0px 5px;
-                                "
+                                class="millennium-apps-buttons-inner-div"
                             >
                                 <img
                                     style="
@@ -101,11 +102,7 @@ async function OnPopupCreation(popup: any) {
                     else if (link.show_name == "true") {
                         newElement.innerHTML = `
                             <div
-                                style="
-                                    display: flex;
-                                    align-items: center;
-                                    padding: 0px 5px;
-                                "
+                                class="millennium-apps-buttons-inner-div"
                             >
                                 <span>` + name + `</span>    
                             </div>
@@ -114,11 +111,7 @@ async function OnPopupCreation(popup: any) {
                     else {
                         newElement.innerHTML = `
                             <div
-                                style="
-                                    display: flex;
-                                    align-items: center;
-                                    padding: 0px 5px;
-                                "
+                                class="millennium-apps-buttons-inner-div"
                             >
                                 <img
                                     style="
