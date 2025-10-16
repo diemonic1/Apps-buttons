@@ -26,7 +26,7 @@ class Backend:
         logger.log("start call_back with path: " + app_path)
 
         try:
-            osResult = launchWithoutConsole(["cmd", "/c", str(app_path)])
+            osResult = launchWithoutConsole(["cmd", "/c", "start", "", str(app_path)])
 
             if (osResult == 0):
                 logger.log("call_back success, open file : " + app_path)
