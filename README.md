@@ -1,5 +1,7 @@
 # Millennium Apps Buttons
 
+[🇷🇺 Документация на русском](README_ru.md) 
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![GitHub Repo stars](https://img.shields.io/github/stars/diemonic1/Millennium-apps-buttons)
 ![GitHub issues](https://img.shields.io/github/issues/diemonic1/Millennium-apps-buttons)
