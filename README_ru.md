@@ -99,5 +99,5 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 ```
 <img width="904" height="367" alt="16 10 2025 - 22ч20м40с" src="https://github.com/user-attachments/assets/c28ad11c-d9bc-4c26-b0af-f18633dd7068" />
 
-## Prerequisites
+## Необходимые компоненты
 - [Millennium](https://steambrew.app/)
