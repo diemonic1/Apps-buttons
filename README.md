@@ -10,7 +10,7 @@ This plugin allows you to add additional buttons to the Steam client, which allo
 
 [Configuration](#Configuration)
 
-[Настройка](Настройка)
+[Настройка](#Настройка)
 
 <img width="704" height="243" alt="image" src="https://github.com/user-attachments/assets/16573323-de41-45bb-80d3-37c71ad159b0" />
 
