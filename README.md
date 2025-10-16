@@ -22,7 +22,7 @@ You can choose not to display icons or text names for the buttons (but one of th
 
 You can also run .bat and .vbs scripts.
 
-Note that the quotes in the program path must be double-quoted: \\
+Note that the quotes in the program path must be double-quoted: \\\
 
 You can use links to any images from the internet as icons, for example, images from this repository:
 ```
