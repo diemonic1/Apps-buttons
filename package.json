@@ -11,7 +11,7 @@
     "@types/webpack": "^5.28.5"
   },
   "type": "module",
-  "name": "millennium-apps-buttons",
+  "name": "apps-buttons",
   "version": "1.0.0",
   "description": "A plugin for adding custom buttons that allow you to open applications directly from the Steam client",
   "main": "./frontend/index.jsx",
