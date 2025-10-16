@@ -5,28 +5,28 @@
             "show_name": "true",
             "icon": "https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/settings.png",
             "show_icon": "true",
-            "path_to_app": "explorer C:\\PROGRA~2\\Steam\\plugins\\millennium-apps-buttons"
+            "path_to_app": "C:\\PROGRA~2\\Steam\\plugins\\millennium-apps-buttons"
         },
         {
             "name": "Steam",
             "show_name": "false",
             "icon": "https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/steam.png",
             "show_icon": "true",
-            "path_to_app": "explorer https://store.steampowered.com/"
+            "path_to_app": "https://store.steampowered.com/"
         },
         {
             "name": "SteamDB",
             "show_name": "true",
             "icon": "https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/steamDB.png",
             "show_icon": "true",
-            "path_to_app": "explorer https://steamdb.info/"
+            "path_to_app": "https://steamdb.info/"
         },
         {
             "name": "SteamGridDB",
             "show_name": "true",
             "icon": "https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/steamGridDB.png",
             "show_icon": "false",
-            "path_to_app": "explorer https://www.steamgriddb.com/"
+            "path_to_app": "https://www.steamgriddb.com/"
         }
     ]
 }
