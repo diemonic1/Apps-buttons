@@ -1,0 +1,25 @@
+{
+    "links": [
+        {
+            "name": "EGS 1",
+            "show_name": "true",
+            "icon": "https://raw.githubusercontent.com/diemonic1/CatPilot/refs/heads/main/CatPilot.png",
+            "show_icon": "true",
+            "path_to_app": "S:\\Programs\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"
+        },
+        {
+            "name": "EGS 2",
+            "show_name": "false",
+            "icon": "https://raw.githubusercontent.com/diemonic1/CatPilot/refs/heads/main/CatPilot.ico",
+            "show_icon": "true",
+            "path_to_app": "S:\\Programs\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"
+        },
+        {
+            "name": "EGS 3",
+            "show_name": "true",
+            "icon": "",
+            "show_icon": "false",
+            "path_to_app": "S:\\Programs\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"
+        }
+    ]
+}
