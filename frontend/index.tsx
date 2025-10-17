@@ -44,31 +44,10 @@ async function OnPopupCreation(popup: any) {
 
                 await print_log({ text: "valid json: " + obj});
 
+                await print_log({ text: "obj.style: " + obj.styleCSS});
+
                 const style = popup.m_popup.document.createElement("style");
-                style.textContent = `
-                    .millennium-apps-buttons {
-                        margin-right: 9px;
-                        padding: 0px 3px;
-                        border-radius: 2px;
-                        height: 24px;
-                        background-color: rgba(103, 112, 123, .2);
-                        color: #8b929a;
-                        transition: all 0.4s;
-                    }
-                    .millennium-apps-buttons:hover {
-                        background-color: rgba(103, 112, 123, 0.5);
-                    }
-                    .millennium-apps-buttons-inner-div {
-                        z-index: 1000;
-                        pointer-events: auto;
-                        -webkit-app-region: no-drag;
-                        user-select: none;
-                        display: flex;
-                        align-items: center;
-                        padding: 0px 5px;
-                        cursor: pointer;
-                    }
-                `;
+                style.textContent = obj.styleCSS;
                 popup.m_popup.document.head.appendChild(style);
 
                 obj.links.forEach((link : string) => {
@@ -89,13 +68,12 @@ async function OnPopupCreation(popup: any) {
                                 class="millennium-apps-buttons-inner-div"
                             >
                                 <img
-                                    style="
-                                        width: 18px;
-                                        height: 18px;
-                                    "
+                                    class="millennium-apps-buttons-img"
                                     src="` + icon + `"
                                 >
-                                <span style="margin-left: 5px;">` + name + `</span>    
+                                <span
+                                    class="millennium-apps-buttons-text-with-margin"
+                                >` + name + `</span>    
                             </div>
                         `;
                     }
@@ -114,11 +92,7 @@ async function OnPopupCreation(popup: any) {
                                 class="millennium-apps-buttons-inner-div"
                             >
                                 <img
-                                    style="
-                                        margin-top: 2px;
-                                        width: 18px;
-                                        height: 18px;
-                                    "
+                                    class="millennium-apps-buttons-img-with-margin"
                                     src="` + icon + `"
                                 > 
                             </div>
