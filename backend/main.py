@@ -5,6 +5,7 @@ import os
 logger = PluginUtils.Logger()
 
 settings = ""
+styleCSS = ""
 
 def launchWithoutConsole(command):
     startupinfo = subprocess.STARTUPINFO()
@@ -16,6 +17,11 @@ class Backend:
     def get_settings():
         global settings
         return str(settings)
+
+    @staticmethod
+    def get_styleCSS():
+        global styleCSS
+        return str(styleCSS)
 
     @staticmethod
     def print_log(text):
@@ -46,13 +52,20 @@ class Plugin:
         logger.log(f"Plugin base dir: {PLUGIN_BASE_DIR}")
 
         settings_dir = os.path.join(PLUGIN_BASE_DIR, "settings.json")
+        styleCSS_dir = os.path.join(PLUGIN_BASE_DIR, "AppsButtonsStyle.css")
 
-        logger.log("settings_path: " + settings_dir)
+        logger.log("settings path: " + settings_dir)
+        logger.log("styleCSS path: " + styleCSS_dir)
 
-        with open(settings_dir) as file:  
+        with open(settings_dir) as file:
             global settings
             settings = file.read()
             logger.log("settings loaded: " + settings)
+
+        with open(styleCSS_dir) as file:  
+            global styleCSS
+            styleCSS = file.read()
+            logger.log("styleCSS loaded: " + styleCSS)
 
         logger.log("Backend loaded")
         Millennium.ready()

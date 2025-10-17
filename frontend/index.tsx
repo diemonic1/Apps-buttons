@@ -6,6 +6,7 @@ const WaitForElement = async (sel: string, parent = document) =>
 const call_back = callable<[{ app_path: string }], string>('Backend.call_back');
 const print_log = callable<[{ text: string }], string>('Backend.print_log');
 const get_settings = callable<[{}], string>('Backend.get_settings');
+const get_styleCSS = callable<[{}], string>('Backend.get_styleCSS');
 
 let ButtonWithAPPSWasAdded = false;
 
@@ -44,10 +45,10 @@ async function OnPopupCreation(popup: any) {
 
                 await print_log({ text: "valid json: " + obj});
 
-                await print_log({ text: "obj.style: " + obj.styleCSS});
+                const styleCSSStr = await get_styleCSS({});
 
                 const style = popup.m_popup.document.createElement("style");
-                style.textContent = obj.styleCSS;
+                style.textContent = styleCSSStr;
                 popup.m_popup.document.head.appendChild(style);
 
                 obj.links.forEach((link : string) => {
