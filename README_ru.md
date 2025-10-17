@@ -20,8 +20,6 @@
 
 Вы можете запускать в том числе .bat и .vbs скрипты.
 
-В строке настроек styleCSS вы можете изменить стили, применяемые к кнопкам, под ваши предпочтения.
-
 Учтите, что ковычки внутри пути к программе должны быть двойными: \\
 
 В качестве иконок вы можете использовать ссылки на любые картинки из интернета, например, картинки из этого репозитория:
@@ -33,6 +31,8 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/steamDB.png
 https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/steamGridDB.png
 ```
+
+В файле AppsButtonsStyle.css вы можете изменить стили и цвета кнопок по вашему желанию.
 
 Для примера, вот мой settings.json:
 ```
@@ -59,8 +59,7 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
             "show_icon": "true",
             "path_to_app": "S:\\Programs\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"
         }
-    ],
-    "styleCSS": ".millennium-apps-buttons { margin-right: 9px; padding: 0px 3px; border-radius: 2px; height: 24px; background-color: rgba(103, 112, 123, .2); color: #8b929a; transition: all 0.4s; } .millennium-apps-buttons:hover { background-color: rgba(103, 112, 123, 0.5); } .millennium-apps-buttons-inner-div { z-index: 1000; pointer-events: auto; -webkit-app-region: no-drag; user-select: none; display: flex; align-items: center; padding: 0px 5px; cursor: pointer; } .millennium-apps-buttons-img { width: 18px; height: 18px; } .millennium-apps-buttons-img-with-margin { margin-top: 2px; width: 18px; height: 18px; } .millennium-apps-buttons-text-with-margin { margin-left: 5px; }"
+    ]
 }
 ```
 <img width="704" height="243" alt="image" src="https://github.com/user-attachments/assets/16573323-de41-45bb-80d3-37c71ad159b0" />
@@ -97,8 +96,7 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
             "show_icon": "false",
             "path_to_app": "https://www.steamgriddb.com/"
         }
-    ],
-    "styleCSS": ".millennium-apps-buttons { margin-right: 9px; padding: 0px 3px; border-radius: 2px; height: 24px; background-color: rgba(103, 112, 123, .2); color: #8b929a; transition: all 0.4s; } .millennium-apps-buttons:hover { background-color: rgba(103, 112, 123, 0.5); } .millennium-apps-buttons-inner-div { z-index: 1000; pointer-events: auto; -webkit-app-region: no-drag; user-select: none; display: flex; align-items: center; padding: 0px 5px; cursor: pointer; } .millennium-apps-buttons-img { width: 18px; height: 18px; } .millennium-apps-buttons-img-with-margin { margin-top: 2px; width: 18px; height: 18px; } .millennium-apps-buttons-text-with-margin { margin-left: 5px; }"
+    ]
 }
 ```
 <img width="904" height="367" alt="16 10 2025 - 22ч20м40с" src="https://github.com/user-attachments/assets/c28ad11c-d9bc-4c26-b0af-f18633dd7068" />
