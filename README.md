@@ -17,14 +17,25 @@ This plugin allows you to add additional buttons to the Steam client, which allo
 # Configuration
 
 After installation, you'll see standard buttons in the client. Clicking the settings button will take you to the directory where the settings.json file with the plugin's settings is stored.
-
 There, you can specify how the buttons will look and which programs or websites they should open.
 
-You can choose not to display icons or text names for the buttons (but one of these is required).
+> [!TIP]
+> You can choose not to show icons or text names for the top buttons (but one of the two is required).
 
-You can also run .bat and .vbs scripts.
+> [!TIP]
+> For buttons added to the context menu or properties menu, you can choose whether to show the arrow icon.
 
-Note that the quotes in the program path must be double-quoted: \\\
+> [!TIP]
+> Buttons added to the menu can receive the %GAME_NAME% parameter - the game name. At runtime, this parameter is replaced with the game name.
+
+> [!IMPORTANT]
+> The "format_game_name" parameter determines whether the name is formatted (a space is placed before capital letters, and all space characters are replaced with + signs so that the game name is recognized when searching online). If the parameter is false, the game name will be inserted as is, without formatting.
+
+> [!TIP]
+> You can also run .bat and .vbs scripts.
+
+> [!IMPORTANT]
+> Note that the quotes inside the program path must be double: \\\
 
 You can use links to any images from the internet as icons, for example, images from this repository:
 ```
