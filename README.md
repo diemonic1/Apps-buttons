@@ -47,7 +47,8 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/steamGridDB.png
 ```
 
-In the TopButtonsStyle.css file, you can change the styles and colors of the buttons as desired.
+> [!TIP]
+> In the TopButtonsStyle.css file, you can change the styles and colors of the buttons as desired.
 
 # For example, this is my settings.json:
 ```
