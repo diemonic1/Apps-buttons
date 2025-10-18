@@ -48,6 +48,19 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 > [!TIP]
 > В файле TopButtonsStyle.css вы можете изменить стили и цвета кнопок по вашему желанию.
 
+> [!TIP]
+> Если вам не нужна какая-то из групп кнопок, просто оставьте список настроек группы пустым:
+> ```
+> {
+>     "top_buttons": [
+>     ],
+>     "right_click_on_game_context_menu_buttons": [
+>     ],
+>     "game_properties_menu_buttons": [
+>     ]
+> }
+> ```
+
 # Для примера, вот мой settings.json:
 ```
 {
