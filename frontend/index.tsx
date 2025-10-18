@@ -167,7 +167,7 @@ async function SpawnConextMenuButtons(popup: any, object_settings: any) {
 
                             let myButton = element.cloneNode(true);
 
-                            myButton.textContent = app.name + (app.add_arrow_icon ? " ↗" : "");
+                            myButton.textContent = app.name + (app.add_arrow_icon == "true" ? " ↗" : "");
                         
                             myButton.addEventListener("click", async () => {
                                 let result = await call_back({
@@ -225,7 +225,7 @@ async function SpawnPropertiesMenuButtons(popup: any, object_settings: any) {
 
         let myButton = element.cloneNode(true);
 
-        myButton.textContent = app.name + (app.add_arrow_icon ? " ↗" : "");
+        myButton.textContent = app.name + (app.add_arrow_icon == "true" ? " ↗" : "");
     
         myButton.addEventListener("click", async () => {
             let result = await call_back({
