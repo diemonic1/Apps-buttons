@@ -50,6 +50,19 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 > [!TIP]
 > In the TopButtonsStyle.css file, you can change the styles and colors of the buttons as desired.
 
+> [!TIP]
+> If you don't need a particular button group, simply leave the group's settings list empty:
+> ```
+> {
+>     "top_buttons": [
+>     ],
+>     "right_click_on_game_context_menu_buttons": [
+>     ],
+>     "game_properties_menu_buttons": [
+>     ]
+> }
+> ```
+
 # For example, this is my settings.json:
 ```
 {
