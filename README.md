@@ -12,6 +12,8 @@ This plugin allows you to add additional buttons to the Steam client, which allo
 
 ![2025-10-16 21-50-43 (1) (1)](https://github.com/user-attachments/assets/4ba9a64c-d005-47ff-8bc0-6e88bdc58eb4)
 
+<img width="303" height="411" alt="18 10 2025 - 10ч46м26с" src="https://github.com/user-attachments/assets/c905aa7d-29bb-4a64-a42e-bf2ddb55f9ab" />
+
 # Configuration
 
 After installation, you'll see standard buttons in the client. Clicking the settings button will take you to the directory where the settings.json file with the plugin's settings is stored.
