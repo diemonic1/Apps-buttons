@@ -93,7 +93,7 @@ For example, this is my settings.json:
 Standart Example:
 ```
 {
-    "links": [
+    "top_buttons": [
         {
             "name": "Settings",
             "show_name": "true",
@@ -122,10 +122,40 @@ Standart Example:
             "show_icon": "false",
             "path_to_app": "https://www.steamgriddb.com/"
         }
+    ],
+    "right_click_on_game_context_menu_buttons": [
+        {
+            "name": "SteamGridDB",
+            "format_game_name": "true",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://www.steamgriddb.com/search/grids?term=%GAME_NAME%"
+        },
+        {
+            "name": "How Long To Beat",
+            "format_game_name": "true",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://howlongtobeat.com/?q=%GAME_NAME%"
+        }
+    ],
+    "game_properties_menu_buttons": [
+        {
+            "name": "SteamGridDB",
+            "format_game_name": "true",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://www.steamgriddb.com/search/grids?term=%GAME_NAME%"
+        },
+        {
+            "name": "How Long To Beat",
+            "format_game_name": "true",
+            "add_arrow_icon": "false",
+            "path_to_app": "https://howlongtobeat.com/?q=%GAME_NAME%"
+        }
     ]
 }
 ```
 <img width="904" height="367" alt="16 10 2025 - 22ч20м40с" src="https://github.com/user-attachments/assets/c28ad11c-d9bc-4c26-b0af-f18633dd7068" />
+<img width="303" height="411" alt="18 10 2025 - 10ч46м26с" src="https://github.com/user-attachments/assets/1fad1406-827d-4525-93d3-1d3cb6e71695" />
+<img width="575" height="531" alt="18 10 2025 - 10ч49м23с" src="https://github.com/user-attachments/assets/822a6255-0140-4935-9411-fdc37bba2d3c" />
 
 ## Prerequisites
 - [Millennium](https://steambrew.app/)
