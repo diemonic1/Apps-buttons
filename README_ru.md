@@ -34,7 +34,7 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 
 В файле TopButtonsStyle.css вы можете изменить стили и цвета кнопок по вашему желанию.
 
-Для примера, вот мой settings.json:
+# Для примера, вот мой settings.json:
 ```
 {
     "top_buttons": [
@@ -88,7 +88,8 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 <img width="248" height="421" alt="18 10 2025 - 10ч38м40с" src="https://github.com/user-attachments/assets/77f264b4-7364-4925-8a9a-969d722f5946" />
 <img width="665" height="538" alt="18 10 2025 - 10ч38м51с" src="https://github.com/user-attachments/assets/127fea27-0943-41e2-8210-a179d0ab2394" />
 
-Стандартный пример:
+
+# Стандартный пример:
 ```
 {
     "top_buttons": [
