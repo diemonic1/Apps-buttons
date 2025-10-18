@@ -28,6 +28,10 @@ class Backend:
         logger.log("[millennium-apps-buttons] " + text)
 
     @staticmethod
+    def print_error(text):
+        raise Exception(text)
+
+    @staticmethod
     def call_back(app_path):
         logger.log("start call_back with path: " + app_path)
 
@@ -52,7 +56,7 @@ class Plugin:
         logger.log(f"Plugin base dir: {PLUGIN_BASE_DIR}")
 
         settings_dir = os.path.join(PLUGIN_BASE_DIR, "settings.json")
-        styleCSS_dir = os.path.join(PLUGIN_BASE_DIR, "AppsButtonsStyle.css")
+        styleCSS_dir = os.path.join(PLUGIN_BASE_DIR, "TopButtonsStyle.css")
 
         logger.log("settings path: " + settings_dir)
         logger.log("styleCSS path: " + styleCSS_dir)
