@@ -34,12 +34,12 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/steamGridDB.png
 ```
 
-In the App Buttons Style.css file, you can change the styles and colors of the buttons as desired.
+In the TopButtonsStyle.css file, you can change the styles and colors of the buttons as desired.
 
 For example, this is my settings.json:
 ```
 {
-    "links": [
+    "top_buttons": [
         {
             "name": "Steam",
             "show_name": "false",
@@ -61,10 +61,34 @@ For example, this is my settings.json:
             "show_icon": "true",
             "path_to_app": "S:\\Programs\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"
         }
+    ],
+    "right_click_on_game_context_menu_buttons": [
+        {
+            "name": "SteamGridDB",
+            "format_game_name": "true",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://www.steamgriddb.com/search/grids?term=%GAME_NAME%"
+        }
+    ],
+    "game_properties_menu_buttons": [
+        {
+            "name": "SteamGridDB",
+            "format_game_name": "true",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://www.steamgriddb.com/search/grids?term=%GAME_NAME%"
+        },
+        {
+            "name": "How Long To Beat",
+            "format_game_name": "true",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://howlongtobeat.com/?q=%GAME_NAME%"
+        }
     ]
 }
 ```
 <img width="704" height="243" alt="image" src="https://github.com/user-attachments/assets/16573323-de41-45bb-80d3-37c71ad159b0" />
+<img width="248" height="421" alt="18 10 2025 - 10ч38м40с" src="https://github.com/user-attachments/assets/e7c89bf3-7727-4387-a8b6-0867882fb7ed" />
+<img width="665" height="538" alt="18 10 2025 - 10ч38м51с" src="https://github.com/user-attachments/assets/ae8895d2-62f2-4d13-bc66-d611cf43e9e5" />
 
 Standart Example:
 ```

@@ -32,12 +32,12 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/main/PUBLIC_ICONS/steamGridDB.png
 ```
 
-В файле AppsButtonsStyle.css вы можете изменить стили и цвета кнопок по вашему желанию.
+В файле TopButtonsStyle.css вы можете изменить стили и цвета кнопок по вашему желанию.
 
 Для примера, вот мой settings.json:
 ```
 {
-    "links": [
+    "top_buttons": [
         {
             "name": "Steam",
             "show_name": "false",
@@ -59,10 +59,34 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
             "show_icon": "true",
             "path_to_app": "S:\\Programs\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"
         }
+    ],
+    "right_click_on_game_context_menu_buttons": [
+        {
+            "name": "SteamGridDB",
+            "format_game_name": "true",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://www.steamgriddb.com/search/grids?term=%GAME_NAME%"
+        }
+    ],
+    "game_properties_menu_buttons": [
+        {
+            "name": "SteamGridDB",
+            "format_game_name": "true",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://www.steamgriddb.com/search/grids?term=%GAME_NAME%"
+        },
+        {
+            "name": "How Long To Beat",
+            "format_game_name": "true",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://howlongtobeat.com/?q=%GAME_NAME%"
+        }
     ]
 }
 ```
 <img width="704" height="243" alt="image" src="https://github.com/user-attachments/assets/16573323-de41-45bb-80d3-37c71ad159b0" />
+<img width="248" height="421" alt="18 10 2025 - 10ч38м40с" src="https://github.com/user-attachments/assets/77f264b4-7364-4925-8a9a-969d722f5946" />
+<img width="665" height="538" alt="18 10 2025 - 10ч38м51с" src="https://github.com/user-attachments/assets/127fea27-0943-41e2-8210-a179d0ab2394" />
 
 Стандартный пример:
 ```
