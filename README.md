@@ -87,6 +87,8 @@ For example, this is my settings.json:
 }
 ```
 <img width="704" height="243" alt="image" src="https://github.com/user-attachments/assets/16573323-de41-45bb-80d3-37c71ad159b0" />
+<img width="248" height="421" alt="18 10 2025 - 10ч38м40с" src="https://github.com/user-attachments/assets/e7c89bf3-7727-4387-a8b6-0867882fb7ed" />
+<img width="665" height="538" alt="18 10 2025 - 10ч38м51с" src="https://github.com/user-attachments/assets/ae8895d2-62f2-4d13-bc66-d611cf43e9e5" />
 
 Standart Example:
 ```
