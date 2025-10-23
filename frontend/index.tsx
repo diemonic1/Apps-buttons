@@ -222,23 +222,23 @@ async function SpawnConextMenuButtons(popup: any, object_settings: any) {
                             const rect = myListButton.getBoundingClientRect();
 
                             myListButton.addEventListener("mouseenter", async () => {
-                                myList.style = "visibility: visible; top: " + rect.top + "px; left: " + rect.right + "px;"
-                            });
-
-                            myListButton.addEventListener("mouseleave", async () => {
-                                myList.style = "visibility: hidden; display: none; top: 0px; left: 0px;"
+                                myList.style = "visibility: visible; top: " + rect.top + "px; left: " + rect.right + "px;";
                             });
 
                             myList.addEventListener("mouseenter", async () => {
-                                myList.style = "visibility: visible; top: " + rect.top + "px; left: " + rect.right + "px;"
+                                myList.style = "visibility: visible; top: " + rect.top + "px; left: " + rect.right + "px;";
+                            });
+
+                            myListButton.addEventListener("mouseleave", async () => {
+                                myList.style = "visibility: hidden; display: none; top: 0px; left: 0px;";
                             });
 
                             myList.addEventListener("mouseleave", async () => {
-                                myList.style = "visibility: hidden; display: none; top: 0px; left: 0px;"
+                                myList.style = "visibility: hidden; display: none; top: 0px; left: 0px;";
                             });
 
                             myList.id = "apps_buttons_additional_drop_down_menu";
-                            myList.style = "visibility: hidden; display: none; top: 0px; left: 0px;"
+                            myList.style = "visibility: hidden; display: none; top: 0px; left: 0px;";
 
                             object_settings.right_click_on_game_context_menu_buttons_drop_down.items.forEach((app : string) => {
                                 const app_path_s = app.path_to_app.replace("%GAME_NAME%", 
