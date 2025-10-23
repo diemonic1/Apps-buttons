@@ -46,7 +46,7 @@
     "right_click_on_game_context_menu_buttons_drop_down": 
     {
         "name": "Other",
-        "append_after_element_number": "7",
+        "append_after_element_number": "6",
         "items": [
             {
                 "name": "SteamGridDB",
