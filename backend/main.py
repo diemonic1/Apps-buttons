@@ -61,7 +61,7 @@ class Plugin:
         logger.log("settings path: " + settings_dir)
         logger.log("styleCSS path: " + styleCSS_dir)
 
-        with open(settings_dir) as file:
+        with open(settings_dir, encoding="utf-8") as file:
             global settings
             settings = file.read()
             logger.log("settings loaded: " + settings)

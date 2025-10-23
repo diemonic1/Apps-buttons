@@ -110,7 +110,9 @@ async function SpawnTopButtons(popup: any, object_settings: any) {
 
 async function SpawnConextMenuButtons(popup: any, object_settings: any) {
 
-    if (object_settings.right_click_on_game_context_menu_buttons.length <= 0) return;
+    if (object_settings.right_click_on_game_context_menu_buttons.length <= 0
+        && object_settings.right_click_on_game_context_menu_buttons_drop_down.items.length <= 0
+    ) return;
 
     SyncLog("try to spawn ConextMenu Buttons");
     const container = popup.m_popup.document.getElementById("popup_target");
@@ -130,19 +132,17 @@ async function SpawnConextMenuButtons(popup: any, object_settings: any) {
                         if (!elementPossiblePlayButton.className.includes("Play")
                             && !elementPossiblePlayButton.className.includes("Install")
                             && !elementPossiblePlayButton.className.includes("Launch")
+                            && !elementPossiblePlayButton.className.includes("Update")
                         ) 
                         {
                             return;
                         }
 
-                        let element = node.children[0].lastElementChild;
-
-                        if (element == null || element == undefined) return;
+                        const draggables = container.querySelectorAll('[draggable="true"]');
 
                         const x = window.mouseX;
                         const y = window.mouseY;
 
-                        const draggables = container.querySelectorAll('[draggable="true"]');
                         let lastClickedElement = "";
 
                         for (const el of draggables) {
@@ -158,26 +158,109 @@ async function SpawnConextMenuButtons(popup: any, object_settings: any) {
                             }
                         }
 
-                        object_settings.right_click_on_game_context_menu_buttons.forEach((app : string) => {
-                            const app_path_s = app.path_to_app.replace("%GAME_NAME%", 
-                                app.format_game_name == "true"
-                                    ? FormatGameName(lastClickedElement)
-                                    : lastClickedElement
-                            );
+                        // just buttons
+                        if (object_settings.right_click_on_game_context_menu_buttons.length > 0)
+                        {
+                            let element = node.children[0].lastElementChild;
 
-                            let myButton = element.cloneNode(true);
+                            if (element == null || element == undefined) return;
 
-                            myButton.textContent = app.name + (app.add_arrow_icon == "true" ? " ↗" : "");
-                        
-                            myButton.addEventListener("click", async () => {
-                                let result = await call_back({
-                                    app_path: app_path_s
+                            object_settings.right_click_on_game_context_menu_buttons.forEach((app : string) => {
+                                const app_path_s = app.path_to_app.replace("%GAME_NAME%", 
+                                    app.format_game_name == "true"
+                                        ? FormatGameName(lastClickedElement)
+                                        : lastClickedElement
+                                );
+
+                                let myButton = element.cloneNode(true);
+
+                                myButton.textContent = app.name + (app.add_arrow_icon == "true" ? " ↗" : "");
+                            
+                                myButton.addEventListener("click", async () => {
+                                    let result = await call_back({
+                                        app_path: app_path_s
+                                    });
                                 });
+
+                                node.children[0].appendChild(myButton);
+                                SyncLog("added node in ConextMenu");
+                            });
+                        }
+
+                        // buttons in drop down menu
+                        if (object_settings.right_click_on_game_context_menu_buttons_drop_down.items.length > 0)
+                        {
+                            let element = node.children[0].children[3];
+
+                            if (element == null || element == undefined) return;
+
+                            let myListButton = element.cloneNode(true);
+
+                            let myList = popup.m_popup.document.getElementById("apps_buttons_additional_drop_down_menu");
+
+                            if (myList == null || myList == undefined)
+                            {
+                                myList = node.cloneNode(true);
+                                node.parentNode.appendChild(myList);
+                            }
+
+                            while (myList.children[0].firstChild) {
+                                myList.children[0].removeChild(myList.children[0].firstChild);
+                            }
+
+                            myListButton.children[0].textContent = object_settings.right_click_on_game_context_menu_buttons_drop_down.name;
+
+                            const n = Number(object_settings.right_click_on_game_context_menu_buttons_drop_down.append_after_element_number);
+
+                            const children = node.children[0].children;
+                            if (n >= children.length) {
+                                node.children[0].appendChild(myListButton);
+                            } else {
+                                node.children[0].insertBefore(myListButton, children[n]);
+                            }
+
+                            const rect = myListButton.getBoundingClientRect();
+
+                            myListButton.addEventListener("mouseenter", async () => {
+                                myList.style = "visibility: visible; top: " + rect.top + "px; left: " + rect.right + "px;"
                             });
 
-                            node.children[0].appendChild(myButton);
-                            SyncLog("added node in ConextMenu");
-                        });
+                            myListButton.addEventListener("mouseleave", async () => {
+                                myList.style = "visibility: hidden; display: none; top: 0px; left: 0px;"
+                            });
+
+                            myList.addEventListener("mouseenter", async () => {
+                                myList.style = "visibility: visible; top: " + rect.top + "px; left: " + rect.right + "px;"
+                            });
+
+                            myList.addEventListener("mouseleave", async () => {
+                                myList.style = "visibility: hidden; display: none; top: 0px; left: 0px;"
+                            });
+
+                            myList.id = "apps_buttons_additional_drop_down_menu";
+                            myList.style = "visibility: hidden; display: none; top: 0px; left: 0px;"
+
+                            object_settings.right_click_on_game_context_menu_buttons_drop_down.items.forEach((app : string) => {
+                                const app_path_s = app.path_to_app.replace("%GAME_NAME%", 
+                                    app.format_game_name == "true"
+                                        ? FormatGameName(lastClickedElement)
+                                        : lastClickedElement
+                                );
+
+                                let myButton = element.cloneNode(true);
+
+                                myButton.textContent = app.name + (app.add_arrow_icon == "true" ? " ↗" : "");
+                            
+                                myButton.addEventListener("click", async () => {
+                                    let result = await call_back({
+                                        app_path: app_path_s
+                                    });
+                                });
+
+                                myList.children[0].appendChild(myButton);
+                                SyncLog("added node in ConextMenu");
+                            });
+                        }
                     }
                     catch (error){
                         
