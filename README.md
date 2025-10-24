@@ -8,11 +8,10 @@
 
 This plugin allows you to add additional buttons to the Steam client, which allow you to launch any programs on your computer or open websites.
 
-<img width="704" height="243" alt="image" src="https://github.com/user-attachments/assets/16573323-de41-45bb-80d3-37c71ad159b0" />
-
 ![2025-10-16 21-50-43 (1) (1)](https://github.com/user-attachments/assets/4ba9a64c-d005-47ff-8bc0-6e88bdc58eb4)
 
-<img width="303" height="411" alt="18 10 2025 - 10ч46м26с" src="https://github.com/user-attachments/assets/c905aa7d-29bb-4a64-a42e-bf2ddb55f9ab" />
+<img width="604" height="243" alt="image" src="https://github.com/user-attachments/assets/16573323-de41-45bb-80d3-37c71ad159b0" />
+<img width="333" height="324" alt="23 10 2025 - 20ч30м54с" src="https://github.com/user-attachments/assets/2e428a7d-ff51-48ba-ad86-66ae0a6bd4fe" />
 
 # Configuration
 
@@ -58,6 +57,13 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 >     ],
 >     "right_click_on_game_context_menu_buttons": [
 >     ],
+>     "right_click_on_game_context_menu_buttons_drop_down": 
+>     {
+>         "name": "Other",
+>         "append_after_element_number": "7",
+>         "items": [
+>         ]
+>     },
 >     "game_properties_menu_buttons": [
 >     ]
 > }
@@ -90,13 +96,32 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
         }
     ],
     "right_click_on_game_context_menu_buttons": [
-        {
-            "name": "SteamGridDB",
-            "format_game_name": "true",
-            "add_arrow_icon": "true",
-            "path_to_app": "https://www.steamgriddb.com/search/grids?term=%GAME_NAME%"
-        }
     ],
+    "right_click_on_game_context_menu_buttons_drop_down": 
+    {
+        "name": "Other",
+        "append_after_element_number": "7",
+        "items": [
+            {
+                "name": "SteamGridDB",
+                "format_game_name": "true",
+                "add_arrow_icon": "true",
+                "path_to_app": "https://www.steamgriddb.com/search/grids?term=%GAME_NAME%"
+            },
+            {
+                "name": "How Long To Beat",
+                "format_game_name": "true",
+                "add_arrow_icon": "true",
+                "path_to_app": "https://howlongtobeat.com/?q=%GAME_NAME%"
+            },
+            {
+                "name": "Backloggd",
+                "format_game_name": "true",
+                "add_arrow_icon": "true",
+                "path_to_app": "https://backloggd.com/search/games/%GAME_NAME%"
+            }
+        ]
+    },
     "game_properties_menu_buttons": [
         {
             "name": "SteamGridDB",
@@ -114,7 +139,7 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 }
 ```
 <img width="704" height="243" alt="image" src="https://github.com/user-attachments/assets/16573323-de41-45bb-80d3-37c71ad159b0" />
-<img width="248" height="421" alt="18 10 2025 - 10ч38м40с" src="https://github.com/user-attachments/assets/e7c89bf3-7727-4387-a8b6-0867882fb7ed" />
+<img width="333" height="314" alt="23 10 2025 - 20ч26м19с" src="https://github.com/user-attachments/assets/4b3bd1d4-f484-47cd-8184-6c3409da312e" />
 <img width="665" height="538" alt="18 10 2025 - 10ч38м51с" src="https://github.com/user-attachments/assets/ae8895d2-62f2-4d13-bc66-d611cf43e9e5" />
 
 
@@ -151,7 +176,7 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
             "path_to_app": "https://www.steamgriddb.com/"
         }
     ],
-    "right_click_on_game_context_menu_buttons": [
+        "right_click_on_game_context_menu_buttons": [
         {
             "name": "SteamGridDB",
             "format_game_name": "true",
@@ -165,6 +190,25 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
             "path_to_app": "https://howlongtobeat.com/?q=%GAME_NAME%"
         }
     ],
+    "right_click_on_game_context_menu_buttons_drop_down": 
+    {
+        "name": "Other",
+        "append_after_element_number": "7",
+        "items": [
+            {
+                "name": "SteamGridDB",
+                "format_game_name": "true",
+                "add_arrow_icon": "true",
+                "path_to_app": "https://www.steamgriddb.com/search/grids?term=%GAME_NAME%"
+            },
+            {
+                "name": "How Long To Beat",
+                "format_game_name": "true",
+                "add_arrow_icon": "false",
+                "path_to_app": "https://howlongtobeat.com/?q=%GAME_NAME%"
+            }
+        ]
+    },
     "game_properties_menu_buttons": [
         {
             "name": "SteamGridDB",
@@ -182,7 +226,7 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 }
 ```
 <img width="904" height="367" alt="16 10 2025 - 22ч20м40с" src="https://github.com/user-attachments/assets/c28ad11c-d9bc-4c26-b0af-f18633dd7068" />
-<img width="303" height="411" alt="18 10 2025 - 10ч46м26с" src="https://github.com/user-attachments/assets/1fad1406-827d-4525-93d3-1d3cb6e71695" />
+<img width="333" height="324" alt="23 10 2025 - 20ч30м54с" src="https://github.com/user-attachments/assets/9bf5beba-e8c8-4bb7-b898-ecd6cd8ff669" />
 <img width="575" height="531" alt="18 10 2025 - 10ч49м23с" src="https://github.com/user-attachments/assets/822a6255-0140-4935-9411-fdc37bba2d3c" />
 
 ## Prerequisites
