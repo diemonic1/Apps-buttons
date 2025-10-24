@@ -65,6 +65,8 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
 >         ]
 >     },
 >     "game_properties_menu_buttons": [
+>     ],
+>     "store_supernav_buttons": [
 >     ]
 > }
 > ```
@@ -135,12 +137,30 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
             "add_arrow_icon": "true",
             "path_to_app": "https://howlongtobeat.com/?q=%GAME_NAME%"
         }
+    ],
+    "store_supernav_buttons": [
+        {
+            "name": "MLNM Plugins",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://steambrew.app/plugins"
+        },
+        {
+            "name": "MLNM Themes",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://steambrew.app/themes"
+        },
+        {
+            "name": "Steam Sales",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://steamdb.info/sales/history/"
+        }
     ]
 }
 ```
 <img width="704" height="243" alt="image" src="https://github.com/user-attachments/assets/16573323-de41-45bb-80d3-37c71ad159b0" />
 <img width="333" height="314" alt="23 10 2025 - 20ч26м19с" src="https://github.com/user-attachments/assets/4b3bd1d4-f484-47cd-8184-6c3409da312e" />
 <img width="665" height="538" alt="18 10 2025 - 10ч38м51с" src="https://github.com/user-attachments/assets/ae8895d2-62f2-4d13-bc66-d611cf43e9e5" />
+<img width="185" height="345" alt="24 10 2025 - 17ч30м48с" src="https://github.com/user-attachments/assets/62a012ad-6682-49ec-93c2-77189cf6d013" />
 
 
 # Standart Example:
@@ -222,12 +242,30 @@ https://raw.githubusercontent.com/diemonic1/Millennium-apps-buttons/refs/heads/m
             "add_arrow_icon": "false",
             "path_to_app": "https://howlongtobeat.com/?q=%GAME_NAME%"
         }
+    ],
+    "store_supernav_buttons": [
+        {
+            "name": "MLNM Plugins",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://steambrew.app/plugins"
+        },
+        {
+            "name": "MLNM Themes",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://steambrew.app/themes"
+        },
+        {
+            "name": "Steam Sales",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://steamdb.info/sales/history/"
+        }
     ]
 }
 ```
 <img width="904" height="367" alt="16 10 2025 - 22ч20м40с" src="https://github.com/user-attachments/assets/c28ad11c-d9bc-4c26-b0af-f18633dd7068" />
 <img width="333" height="324" alt="23 10 2025 - 20ч30м54с" src="https://github.com/user-attachments/assets/9bf5beba-e8c8-4bb7-b898-ecd6cd8ff669" />
 <img width="575" height="531" alt="18 10 2025 - 10ч49м23с" src="https://github.com/user-attachments/assets/822a6255-0140-4935-9411-fdc37bba2d3c" />
+<img width="185" height="345" alt="24 10 2025 - 17ч30м48с" src="https://github.com/user-attachments/assets/7bd1458b-adf8-4718-a14b-6cfa158510d1" />
 
 ## Prerequisites
 - [Millennium](https://steambrew.app/)
