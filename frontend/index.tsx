@@ -321,6 +321,30 @@ async function SpawnPropertiesMenuButtons(popup: any, object_settings: any) {
     });
 }
 
+async function SpawnStoreSupernavButtons(popup: any, object_settings: any) {
+
+    if (object_settings.store_supernav_buttons.length <= 0) return;
+
+    SyncLog("start clone node in Store Supernav Menu");
+
+    const anyItem = await WaitForElement("div.contextMenuItem", popup.m_popup.document);
+
+    object_settings.store_supernav_buttons.forEach((app : string) => {
+        let myButton = anyItem.cloneNode(true);
+
+        myButton.textContent = app.name + (app.add_arrow_icon == "true" ? " ↗" : "");
+    
+        myButton.addEventListener("click", async () => {
+            let result = await call_back({
+                app_path: app.path_to_app
+            });
+        });
+
+        anyItem.parentNode.appendChild(myButton);
+        SyncLog("added node in Store Supernav Menu");
+    });
+}
+
 async function OnPopupCreation(popup: any) {
     await print_log({ text: "OnPopupCreation"});
 
@@ -345,6 +369,9 @@ async function OnPopupCreation(popup: any) {
         SpawnTopButtons(popup, global_object_settings);
         SpawnConextMenuButtons(popup, global_object_settings)
     }
+    if (popup.m_strTitle === "Store Supernav") {
+        SpawnStoreSupernavButtons(popup, global_object_settings)
+    }
 
     SpawnPropertiesMenuButtons(popup, global_object_settings);
 }
@@ -360,10 +387,16 @@ export default async function PluginMain() {
         await sleep(100);
     }
 
-    const doc = g_PopupManager.GetExistingPopup("SP Desktop_uid0");
-	if (doc) {
-		OnPopupCreation(doc);
+    const Desktop = g_PopupManager.GetExistingPopup("SP Desktop_uid0");
+	if (Desktop) {
+		OnPopupCreation(Desktop);
 	}
+
+    g_PopupManager.m_mapPopups.data_.forEach(popup => {
+        if (popup.value_.m_strTitle === "Store Supernav") {
+            OnPopupCreation(popup.value_);
+        }
+    });
 
 	g_PopupManager.AddPopupCreatedCallback(OnPopupCreation);
 }

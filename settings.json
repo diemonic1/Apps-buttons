@@ -75,5 +75,22 @@
             "add_arrow_icon": "false",
             "path_to_app": "https://howlongtobeat.com/?q=%GAME_NAME%"
         }
+    ],
+    "store_supernav_buttons": [
+        {
+            "name": "MLNM Plugins",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://steambrew.app/plugins"
+        },
+        {
+            "name": "MLNM Themes",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://steambrew.app/themes"
+        },
+        {
+            "name": "Steam Sales",
+            "add_arrow_icon": "true",
+            "path_to_app": "https://steamdb.info/sales/history/"
+        }
     ]
 }
