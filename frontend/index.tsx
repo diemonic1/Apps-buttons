@@ -2,13 +2,22 @@ import { Millennium, IconsModule, definePlugin, callable, Field, DialogButton } 
 
 const WaitForElement = async (sel: string, parent = document) => [...(await Millennium.findElement(parent, sel))][0];
 
-const call_back = callable<[{ app_path: string }], string>('call_back');
 const print_log = callable<[{ text: string }], string>('print_log');
 const print_error = callable<[{ text: string }], string>('print_error');
 const get_settings = callable<[{}], string>('get_settings');
 const get_styleCSS = callable<[{}], string>('get_styleCSS');
-const open_github = callable<[{}], string>('open_github');
-const open_settings = callable<[{}], string>('open_settings');
+const get_installPath = callable<[{}], string>('get_installPath');
+const call_back_backend = callable<[{ app_path: string }], string>('call_back_backend');
+
+async function call_back(app_path: string){
+	if (app_path.includes("http")){
+    	return SteamClient.System.OpenInSystemBrowser(app_path);
+	}
+	else {
+		return await call_back_backend({ app_path: app_path });
+		//return SteamClient.System.OpenLocalDirectoryInSystemExplorer(app_path);
+	}
+}
 
 async function SyncLog(textS: string) {
 	await print_log({ text: textS });
@@ -27,96 +36,6 @@ window.mouseX = 0;
 window.mouseY = 0;
 
 let global_object_settings = '';
-
-/*
-let TopButtonsWasSpawned = false;
-
-async function SpawnTopButtons(popup: any, object_settings: any) {
-	SyncLog('try to spawn top puttons');
-
-	if (!TopButtonsWasSpawned) {
-		TopButtonsWasSpawned = true;
-
-		if (object_settings.top_buttons.length <= 0) return;
-
-		const styleCSSStr = await get_styleCSS({});
-
-		const style = popup.m_popup.document.createElement('style');
-		style.textContent = styleCSSStr;
-		popup.m_popup.document.head.appendChild(style);
-
-		const anyItem = await WaitForElement('div.tool-tip-source', popup.m_popup.document);
-
-		object_settings.top_buttons.forEach(async (app: string) => {
-			const newElement = popup.m_popup.document.createElement('div');
-
-			const name = app.name == '' ? 'Empty name' : app.name;
-
-			newElement.classList.add('millennium-apps-buttons');
-
-			newElement.title = name;
-
-			const icon =
-				app.icon.includes('www') || app.icon.includes('http') ? app.icon : 'https://raw.githubusercontent.com/diemonic1/CatPilot/refs/heads/main/CatPilot.png';
-
-			if (app.show_name == 'true' && app.show_icon == 'true') {
-				newElement.innerHTML =
-					`
-					<div
-						class="millennium-apps-buttons-inner-div"
-					>
-						<img
-							class="millennium-apps-buttons-img"
-							src="` +
-					icon +
-					`"
-						>
-						<span
-							class="millennium-apps-buttons-text-with-margin"
-						>` +
-					name +
-					`</span>    
-					</div>
-				`;
-			} else if (app.show_name == 'true') {
-				newElement.innerHTML =
-					`
-					<div
-						class="millennium-apps-buttons-inner-div"
-					>
-						<span>` +
-					name +
-					`</span>    
-					</div>
-				`;
-			} else {
-				newElement.innerHTML =
-					`
-					<div
-						class="millennium-apps-buttons-inner-div"
-					>
-						<img
-							class="millennium-apps-buttons-img-with-margin"
-							src="` +
-					icon +
-					`"
-						> 
-					</div>
-				`;
-			}
-
-			newElement.addEventListener('click', async () => {
-				let result = await call_back({
-					app_path: app.path_to_app,
-				});
-				SyncLog('result: ' + result);
-			});
-
-			anyItem.parentNode.insertBefore(newElement, anyItem);
-		});
-	}
-}
-*/
 
 //#region Top Buttons
 
@@ -207,9 +126,7 @@ async function spawnTopButtonsOnce(popup: any, object_settings: any) {
 		}
 
 		newElement.addEventListener('click', async () => {
-			const result = await call_back({
-				app_path: app.path_to_app,
-			});
+			const result = await call_back(app.path_to_app);
 			SyncLog('result: ' + result);
 		});
 
@@ -290,9 +207,7 @@ async function SpawnConextMenuButtons(popup: any, object_settings: any) {
 								myButton.textContent = app.name + (app.add_arrow_icon == 'true' ? ' ↗' : '');
 
 								myButton.addEventListener('click', async () => {
-									let result = await call_back({
-										app_path: app_path_s,
-									});
+									let result = await call_back(app_path_s);
 								});
 
 								node.children[0].appendChild(myButton);
@@ -362,9 +277,7 @@ async function SpawnConextMenuButtons(popup: any, object_settings: any) {
 								myButton.textContent = app.name + (app.add_arrow_icon == 'true' ? ' ↗' : '');
 
 								myButton.addEventListener('click', async () => {
-									let result = await call_back({
-										app_path: app_path_s,
-									});
+									let result = await call_back(app_path_s);
 								});
 
 								myList.children[0].appendChild(myButton);
@@ -414,9 +327,7 @@ async function SpawnPropertiesMenuButtons(popup: any, object_settings: any) {
 		myButton.textContent = app.name + (app.add_arrow_icon == 'true' ? ' ↗' : '');
 
 		myButton.addEventListener('click', async () => {
-			let result = await call_back({
-				app_path: app_path_s,
-			});
+			let result = await call_back(app_path_s);
 		});
 
 		mainPanel.children[1].appendChild(myButton);
@@ -437,9 +348,7 @@ async function SpawnStoreSupernavButtons(popup: any, object_settings: any) {
 		myButton.textContent = app.name + (app.add_arrow_icon == 'true' ? ' ↗' : '');
 
 		myButton.addEventListener('click', async () => {
-			let result = await call_back({
-				app_path: app.path_to_app,
-			});
+			let result = await call_back(app.path_to_app);
 		});
 
 		anyItem.parentNode.appendChild(myButton);
@@ -489,7 +398,7 @@ const SettingsContent = () => {
 			>
 				<DialogButton
 					onClick={() => {
-						open_github({});
+    					SteamClient.System.OpenInSystemBrowser("https://github.com/diemonic1/Apps-buttons");
 					}}
 				>
 					Open GitHub
@@ -503,8 +412,9 @@ const SettingsContent = () => {
 				focusable
 			>
 				<DialogButton
-					onClick={() => {
-						open_settings({});
+					onClick={async () => {
+						const installPath = await get_installPath({});
+						SteamClient.System.OpenLocalDirectoryInSystemExplorer(installPath)
 					}}
 				>
 					Open the folder with the settings file

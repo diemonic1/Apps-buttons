@@ -1,5 +1,6 @@
 local logger = require("logger")
 local millennium = require("millennium")
+local utils = require("utils")
 
 -- ====== STATE ======
 
@@ -9,12 +10,7 @@ local styleCSS = ""
 -- ====== read_file ======
 
 local function read_file(path)
-    local file = io.open(path, "r")
-    if not file then
-        return nil
-    end
-    local content = file:read("*a")
-    file:close()
+    local content, err = utils.read_file(path)
     return content
 end
 
@@ -86,7 +82,6 @@ local function launch_without_console(path)
 
     local pi = ffi.new("PROCESS_INFORMATION")
 
-    -- ВАЖНО: CreateProcess МЕНЯЕТ строку → нужен mutable buffer
     local cmd = ffi.new("char[?]", #command + 1)
     ffi.copy(cmd, command)
 
@@ -127,42 +122,8 @@ function get_styleCSS()
     return tostring(styleCSS)
 end
 
-function open_github()
-    return launch_without_console("https://github.com/diemonic1/Apps-buttons")
-end
-
-function open_settings()
-    return launch_without_console(millennium.get_install_path() .. "/plugins/Apps-buttons")
-end
-
-function get_url_data(url)
-    logger:info("[Apps-buttons] try to get " .. url)
-
-    local now = os.time()
-
-    if lastDownloadingTime == 0 then
-        local response, err = http.request(url)
-        
-        if response then
-            cachedResponse = response.body
-            lastDownloadingTime = now
-            return cachedResponse
-        end
-    end
-
-    if (now - lastDownloadingTime) < CACHE_TIMEOUT then
-        logger:info("[Apps-buttons] using cached data")
-        return cachedResponse
-    end
-
-    local response, err = http.request(url)
-    if response then
-        cachedResponse = response.body
-        lastDownloadingTime = now
-        logger:info("[Apps-buttons] cache updated")
-
-        return cachedResponse
-    end
+function get_installPath()
+    return tostring(string.gsub(utils.get_backend_path(), "\\backend", ""))
 end
 
 function print_log(text)
@@ -175,7 +136,7 @@ function print_error(text)
     return "[Apps-buttons] " .. tostring(text);
 end
 
-function call_back(app_path)
+function call_back_backend(app_path)
     logger:info("start call_back with path: " .. app_path)
 
     local result = launch_without_console(app_path)
@@ -204,7 +165,10 @@ local function on_load()
 
     logger:info("Plugin base dir: " .. millennium.get_install_path())
 
-    local settings_path = millennium.get_install_path() .. "/plugins/Apps-buttons/settings.json"
+    local install_path = get_installPath()
+    logger:info("install path: " .. install_path)
+
+    local settings_path = install_path .. "/settings.json"
     logger:info("settings path: " .. settings_path)
 
     local content = read_file(settings_path)
@@ -215,7 +179,7 @@ local function on_load()
         logger:error("failed to load settings.json")
     end
 
-    local TopButtonsStyle_path = millennium.get_install_path() .. "/plugins/Apps-buttons/TopButtonsStyle.css"
+    local TopButtonsStyle_path = install_path .. "/TopButtonsStyle.css"
     logger:info("TopButtonsStyle path: " .. TopButtonsStyle_path)
 
     local content = read_file(TopButtonsStyle_path)
