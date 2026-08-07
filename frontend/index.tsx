@@ -796,6 +796,15 @@ async function OnPopupCreation(popup: any) {
 		const [dropDownName, setDropDownName] = useState(initialSettings.right_click_on_game_context_menu_buttons_drop_down?.name ?? 'Additional');
 		const [dropDownAppendAfter, setDropDownAppendAfter] = useState(initialSettings.right_click_on_game_context_menu_buttons_drop_down?.append_after_element_number ?? '1');
 		const [topButtonsStyle, setTopButtonsStyle] = useState(initialSettings.top_buttons_style ?? '');
+		const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+			rightClick: false,
+			dropDown: false,
+			gameProperties: false,
+			topButtons: false,
+			storeSupernav: false,
+			appPage: false,
+		});
+		const toggleSection = (key: string) => setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
 
 		const languageOptions = GetLanguageOptions();
 		const selectedlanguageOption =
@@ -813,6 +822,27 @@ async function OnPopupCreation(popup: any) {
 		const BUTTON_FORMAT_GAME_NAME_TIP = replaceGameNameParameter(Localize(language, 'ButtonFormatGameNameTip'));
 		const BUTTON_ADD_ARROW_ICON_TIP = Localize(language, 'ButtonAddArrowIconTip');
 		const DROPDOWN_MENU_SETTINGS = Localize(language, 'DropdownMenuSettings');
+
+		const renderSectionHeader = (titleKey: string, sectionKey: string, addTooltipKey: string, onAdd: () => void, showAsterisk: boolean = true) => (
+			<>
+				<button
+					style={{ backgroundColor: '#d29cffff', cursor: 'pointer', borderRadius: '6px', border: '0px', width: '100%', padding: '6px 0px', marginBottom: '8px', fontSize: '14px', fontWeight: 'bold', color: '#000' }}
+					onClick={onAdd}
+					title={Localize(language, addTooltipKey)}
+				>
+					{Localize(language, 'Add Button')} +
+				</button>
+				<div
+					style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+					onClick={() => toggleSection(sectionKey)}
+				>
+					<span style={{ display: 'inline-block', transition: 'transform 0.15s', transform: openSections[sectionKey] ? 'rotate(90deg)' : 'rotate(0deg)' }}>▶</span>
+					<h3 style={{ margin: 0 }} title={showAsterisk ? GAME_NAME_PARAMETER_TIP : undefined}>
+						{Localize(language, titleKey)} {showAsterisk && <span style={{ color: YELLOW_HIGHLIGHT_COLOR }}>*</span>}
+					</h3>
+				</div>
+			</>
+		);
 
 		const preserveStaticFields = () => {
 			setDropDownName(getTextFieldValue('drop_down_name_field', dropDownName));
@@ -900,6 +930,7 @@ async function OnPopupCreation(popup: any) {
 			dropDownName,
 			dropDownAppendAfter,
 			topButtonsStyle,
+			openSections,
 		]);
 
 		return (
@@ -961,21 +992,12 @@ async function OnPopupCreation(popup: any) {
 				<br></br>
 
 				<div style={{ backgroundColor: "rgba(255, 202, 0, 0.05)", padding: '0px 5px', borderRadius: '8px' }}>
-					<div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-						<h3 style={{ margin: 0 }} title={GAME_NAME_PARAMETER_TIP}>{Localize(language, 'Right click on game context menu buttons')} <span style={{ color: YELLOW_HIGHLIGHT_COLOR }}>*</span></h3>
-						<button
-							style={{ backgroundColor: '#d29cffff', cursor: 'pointer', borderRadius: '10px', scale: '1.4', marginBottom: '10px' }}
-							onClick={() => {
-								preserveStaticFields();
-								setRightClickButtons([...readRightClickButtonsFromDom(), createDefaultGenericButton()]);
-							}}
-							title={Localize(language, 'Add right click on game context menu button')}
-						>
-							+
-						</button>
-					</div>
+					{renderSectionHeader('Right click on game context menu buttons', 'rightClick', 'Add right click on game context menu button', () => {
+						preserveStaticFields();
+						setRightClickButtons([...readRightClickButtonsFromDom(), createDefaultGenericButton()]);
+					})}
 
-					{rightClickButtons.map((item, index) => (
+					{openSections.rightClick && rightClickButtons.map((item, index) => (
 						<div key={`right-click-${index}`} style={buttonBackgroundStyle}>
 							<div style={{ textAlign: 'center' }} title={Localize(language, 'Right click on game context menu buttons')}>{Localize(language, 'Button Number')}: {index + 1}</div>
 							<div id={`right_click_on_game_context_menu_buttons_name_${index}`}>
@@ -1031,20 +1053,12 @@ async function OnPopupCreation(popup: any) {
 				<br></br>
 
 				<div style={{ backgroundColor: "rgba(255, 0, 0, 0.05)", padding: '0px 5px', borderRadius: '8px' }}>
-					<div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-						<h3 style={{ margin: 0 }} title={GAME_NAME_PARAMETER_TIP}>{Localize(language, 'Right click on game context menu buttons in drop down')} <span style={{ color: YELLOW_HIGHLIGHT_COLOR }}>*</span></h3>
-						<button
-							style={{ backgroundColor: '#d29cffff', cursor: 'pointer', borderRadius: '10px', scale: '1.4', marginBottom: '10px' }}
-							onClick={() => {
-								preserveStaticFields();
-								setDropDownItems([...readDropDownItemsFromDom(), createDefaultGenericButton()]);
-							}}
-							title={Localize(language, 'Add right click on game context menu button in drop down')}
-						>
-							+
-						</button>
-					</div>
+					{renderSectionHeader('Right click on game context menu buttons in drop down', 'dropDown', 'Add right click on game context menu button in drop down', () => {
+						preserveStaticFields();
+						setDropDownItems([...readDropDownItemsFromDom(), createDefaultGenericButton()]);
+					})}
 
+					{openSections.dropDown && <>
 					{dropDownItems.map((item, index) => (
 						<div key={`drop-down-${index}`} style={buttonBackgroundStyle}>
 							<div style={{ textAlign: 'center' }} title={Localize(language, 'Right click on game context menu buttons in drop down')}>{Localize(language, 'Button Number')}: {index + 1}</div>
@@ -1108,6 +1122,7 @@ async function OnPopupCreation(popup: any) {
 							/>
 						</div>
 					</PanelSection>
+					</>}
 				</div>
 
 				<div style={{ minHeight: '6px', backgroundColor: '#4a545d', margin: '8px 0px', borderRadius: '5px' }} />
@@ -1116,21 +1131,12 @@ async function OnPopupCreation(popup: any) {
 				<br></br>
 
 				<div style={{ backgroundColor: "rgba(61, 255, 0, 0.05)", padding: '0px 5px', borderRadius: '8px' }}>
-					<div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-						<h3 style={{ margin: 0 }} title={GAME_NAME_PARAMETER_TIP}>{Localize(language, 'Game properties menu buttons')} <span style={{ color: YELLOW_HIGHLIGHT_COLOR }}>*</span></h3>
-						<button
-							style={{ backgroundColor: '#d29cffff', cursor: 'pointer', borderRadius: '10px', scale: '1.4', marginBottom: '10px' }}
-							onClick={() => {
-								preserveStaticFields();
-								setGamePropertiesButtons([...readGamePropertiesButtonsFromDom(), createDefaultGenericButton()]);
-							}}
-							title={Localize(language, 'Add game properties menu buttons')}
-						>
-							+
-						</button>
-					</div>
+					{renderSectionHeader('Game properties menu buttons', 'gameProperties', 'Add game properties menu buttons', () => {
+						preserveStaticFields();
+						setGamePropertiesButtons([...readGamePropertiesButtonsFromDom(), createDefaultGenericButton()]);
+					})}
 
-					{gamePropertiesButtons.map((item, index) => (
+					{openSections.gameProperties && gamePropertiesButtons.map((item, index) => (
 						<div key={`game-properties-${index}`} style={buttonBackgroundStyle}>
 							<div style={{ textAlign: 'center' }} title={Localize(language, 'Game properties menu buttons')}>{Localize(language, 'Button Number')}: {index + 1}</div>
 							<div id={`game_properties_menu_buttons_name_${index}`}>
@@ -1186,21 +1192,12 @@ async function OnPopupCreation(popup: any) {
 				<br></br>
 
 				<div style={{ backgroundColor: "rgba(0, 255, 202, 0.05)", padding: '0px 5px', borderRadius: '8px' }}>
-					<div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-						<h3 style={{ margin: 0 }}>{Localize(language, 'Top Buttons')}</h3>
-						<button
-							style={{ backgroundColor: '#d29cffff', cursor: 'pointer', borderRadius: '10px', scale: '1.4', marginBottom: '10px' }}
-							onClick={() => {
-								preserveStaticFields();
-								setTopButtons([...readTopButtonsFromDom(), createDefaultTopButton()]);
-							}}
-							title={Localize(language, 'Add top button')}
-						>
-							+
-						</button>
-					</div>
+					{renderSectionHeader('Top Buttons', 'topButtons', 'Add top button', () => {
+						preserveStaticFields();
+						setTopButtons([...readTopButtonsFromDom(), createDefaultTopButton()]);
+					}, false)}
 
-					{topButtons.map((item, index) => (
+					{openSections.topButtons && topButtons.map((item, index) => (
 						<div key={`top-buttons-${index}`} style={buttonBackgroundStyle}>
 							<div style={{ textAlign: 'center' }} title={Localize(language, 'Top Buttons')}>{Localize(language, 'Button Number')}: {index + 1}</div>
 							<div id={`top_buttons_name_${index}`}>
@@ -1260,21 +1257,12 @@ async function OnPopupCreation(popup: any) {
 				<br></br>
 
 				<div style={{ backgroundColor: "rgba(230, 0, 255, 0.05)", padding: '0px 5px', borderRadius: '8px' }}>
-					<div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-						<h3 style={{ margin: 0 }}>{Localize(language, 'Store supernav buttons')}</h3>
-						<button
-							style={{ backgroundColor: '#d29cffff', cursor: 'pointer', borderRadius: '10px', scale: '1.4', marginBottom: '10px' }}
-							onClick={() => {
-								preserveStaticFields();
-								setStoreSupernavButtons([...readStoreSupernavButtonsFromDom(), createDefaultStoreSupernavButton()]);
-							}}
-							title={Localize(language, 'Add store supernav buttons')}
-						>
-							+
-						</button>
-					</div>
+					{renderSectionHeader('Store supernav buttons', 'storeSupernav', 'Add store supernav buttons', () => {
+						preserveStaticFields();
+						setStoreSupernavButtons([...readStoreSupernavButtonsFromDom(), createDefaultStoreSupernavButton()]);
+					}, false)}
 
-					{storeSupernavButtons.map((item, index) => (
+					{openSections.storeSupernav && storeSupernavButtons.map((item, index) => (
 						<div key={`store-supernav-${index}`} style={buttonBackgroundStyle}>
 							<div style={{ textAlign: 'center' }} title={Localize(language, 'Store supernav buttons')}>{Localize(language, 'Button Number')}: {index + 1}</div>
 							<div id={`store_supernav_buttons_name_${index}`}>
@@ -1319,21 +1307,12 @@ async function OnPopupCreation(popup: any) {
 				<br></br>
 
 				<div style={{ backgroundColor: "rgba(0, 123, 255, 0.05)", padding: '0px 5px', borderRadius: '8px' }}>
-					<div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-						<h3 style={{ margin: 0 }} title={GAME_NAME_PARAMETER_TIP}>{Localize(language, 'App page Buttons')} <span style={{ color: YELLOW_HIGHLIGHT_COLOR }}>*</span></h3>
-						<button
-							style={{ backgroundColor: '#d29cffff', cursor: 'pointer', borderRadius: '10px', scale: '1.4', marginBottom: '10px' }}
-							onClick={() => {
-								preserveStaticFields();
-								setAppPageButtons([...readAppPageButtonsFromDom(), createDefaultAppPageButton()]);
-							}}
-							title={Localize(language, 'Add app page button')}
-						>
-							+
-						</button>
-					</div>
+					{renderSectionHeader('App page Buttons', 'appPage', 'Add app page button', () => {
+						preserveStaticFields();
+						setAppPageButtons([...readAppPageButtonsFromDom(), createDefaultAppPageButton()]);
+					})}
 
-					{appPageButtons.map((item, index) => (
+					{openSections.appPage && appPageButtons.map((item, index) => (
 						<div key={`app-page-${index}`} style={buttonBackgroundStyle}>
 							<div style={{ textAlign: 'center' }} title={Localize(language, 'App page Buttons')}>{Localize(language, 'Button Number')}: {index + 1}</div>
 							<div id={`app_page_buttons_name_${index}`}>
