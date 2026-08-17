@@ -563,14 +563,18 @@ async function SubscribeOnMutations(popup: any) {
 						lastPage = window.MainWindowBrowserManager?.m_lastLocation?.pathname;
 
 						if (
-							elementPossiblePlayButton.className.includes('Play') ||
-							elementPossiblePlayButton.className.includes('Install') ||
-							elementPossiblePlayButton.className.includes('Launch') ||
-							elementPossiblePlayButton.className.includes('Update') ||
-							elementPossiblePlayButton.className.includes('Cancel') ||
-							elementPossiblePlayButton.className.includes('Download') ||
-							elementPossiblePlayButton.className.includes('Pause') ||
-							elementPossiblePlayButton.className.includes('Resume')
+							(
+								elementPossiblePlayButton.className.includes('Play') ||
+								elementPossiblePlayButton.className.includes('Stop') ||
+								elementPossiblePlayButton.className.includes('Install') ||
+								elementPossiblePlayButton.className.includes('Launch') ||
+								elementPossiblePlayButton.className.includes('Update') ||
+								elementPossiblePlayButton.className.includes('Cancel') ||
+								elementPossiblePlayButton.className.includes('Download') ||
+								elementPossiblePlayButton.className.includes('Pause') ||
+								elementPossiblePlayButton.className.includes('Resume')
+							)
+							&& elementPossiblePlayButton.className.includes('Installed') == false
 						) {
 							NeedToAddConextMenuButtons = true;
 						}
