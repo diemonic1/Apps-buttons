@@ -1,8 +1,50 @@
 local logger = require("logger")
 local millennium = require("millennium")
 local utils = require("utils")
+local http = require("http")
+
+-- ====== HTTP ======
+
+-- The default Lua-HTTP user agent gets served inconsistently, so a browser one
+-- is used here - same approach as in the RSS-feed-in-whats-new plugin.
+local REQUEST_OPTIONS = {
+    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    headers = {
+        ["Accept"] = "application/json, text/plain, */*"
+    },
+    timeout = 5
+}
+
+-- Returns the body only for successful responses, so callers never receive an
+-- error page that would later fail JSON parsing.
+local function fetch(url)
+    local response, err = http.request(url, REQUEST_OPTIONS)
+
+    if not response then
+        logger:error("[Custom-buttons] request failed for " .. tostring(url) .. ": " .. tostring(err))
+        return nil
+    end
+
+    if response.status < 200 or response.status >= 300 then
+        logger:error("[Custom-buttons] request for " .. tostring(url) .. " returned status " .. tostring(response.status))
+        return nil
+    end
+
+    return response.body
+end
 
 -- ====== BACKEND API ======
+
+-- The frontend runs in a CEF context whose origin steamcommunity.com does not
+-- allow, so requests to it are blocked by CORS there and have to go through the
+-- backend instead.
+function get_url_data(url)
+    if not string.find(url, "http", 1, true) then
+        return nil
+    end
+
+    return fetch(url)
+end
 
 function print_log(text)
     logger:info("[Custom-buttons] " .. tostring(text));

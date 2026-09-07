@@ -5,11 +5,10 @@ export interface PluginSettings {
 
 const STORAGE_KEY = 'Custom-buttons-settings';
 
-const DEFAULT_SETTINGS: PluginSettings = {
-  language: "English",
-  settings_json: `{
+export const DEFAULT_SETTINGS_JSON = `{
       "top_buttons": [
         {
+          "enabled": "true",
           "name": "SteamGridDB",
           "show_name": "true",
           "icon": "https://raw.githubusercontent.com/diemonic1/Custom-buttons/refs/heads/main/PUBLIC_ICONS/steamGridDB.png",
@@ -17,6 +16,7 @@ const DEFAULT_SETTINGS: PluginSettings = {
           "path_to_app": "https://www.steamgriddb.com/"
         },
         {
+          "enabled": "true",
           "name": "SteamDB",
           "show_name": "true",
           "icon": "https://raw.githubusercontent.com/diemonic1/Custom-buttons/refs/heads/main/PUBLIC_ICONS/steamDB.png",
@@ -24,6 +24,7 @@ const DEFAULT_SETTINGS: PluginSettings = {
           "path_to_app": "https://steamdb.info/"
         },
         {
+          "enabled": "true",
           "name": "Steam",
           "show_name": "true",
           "icon": "https://raw.githubusercontent.com/diemonic1/Custom-buttons/refs/heads/main/PUBLIC_ICONS/steam.png",
@@ -33,12 +34,14 @@ const DEFAULT_SETTINGS: PluginSettings = {
       ],
       "right_click_on_game_context_menu_buttons": [
         {
+          "enabled": "true",
           "name": "YouTube",
           "format_game_name": "true",
           "add_arrow_icon": "true",
           "path_to_app": "https://www.youtube.com/results?search_query=%GAME_NAME%"
         },
         {
+          "enabled": "true",
           "name": "Twitch",
           "format_game_name": "true",
           "add_arrow_icon": "true",
@@ -48,12 +51,14 @@ const DEFAULT_SETTINGS: PluginSettings = {
       "right_click_on_game_context_menu_buttons_drop_down": {
         "items": [
           {
+            "enabled": "true",
             "name": "SteamGridDB",
             "format_game_name": "true",
             "add_arrow_icon": "true",
             "path_to_app": "https://www.steamgriddb.com/search/grids?term=%GAME_NAME%"
           },
           {
+            "enabled": "true",
             "name": "How Long To Beat",
             "format_game_name": "true",
             "add_arrow_icon": "true",
@@ -65,12 +70,14 @@ const DEFAULT_SETTINGS: PluginSettings = {
       },
       "game_properties_menu_buttons": [
         {
+          "enabled": "true",
           "name": "SteamGridDB",
           "format_game_name": "true",
           "add_arrow_icon": "true",
           "path_to_app": "https://www.steamgriddb.com/search/grids?term=%GAME_NAME%"
         },
         {
+          "enabled": "true",
           "name": "How Long To Beat",
           "format_game_name": "true",
           "add_arrow_icon": "true",
@@ -79,16 +86,19 @@ const DEFAULT_SETTINGS: PluginSettings = {
       ],
       "store_supernav_buttons": [
         {
+          "enabled": "true",
           "name": "MLNM Plugins",
           "add_arrow_icon": "true",
           "path_to_app": "https://steambrew.app/plugins"
         },
         {
+          "enabled": "true",
           "name": "MLNM Themes",
           "add_arrow_icon": "true",
           "path_to_app": "https://steambrew.app/themes"
         },
         {
+          "enabled": "true",
           "name": "Steam Sales",
           "add_arrow_icon": "true",
           "path_to_app": "https://steamdb.info/sales/history/"
@@ -96,6 +106,14 @@ const DEFAULT_SETTINGS: PluginSettings = {
       ],
       "app_page_buttons": [
         {
+          "enabled": "true",
+          "name": "SteamDB",
+          "format_game_name": "true",
+          "icon": "https://raw.githubusercontent.com/diemonic1/Custom-buttons/refs/heads/main/PUBLIC_ICONS/steamDB_alt.png",
+          "path_to_app": "https://steamdb.info/app/%GAME_ID%/charts/"
+        },
+        {
+          "enabled": "true",
           "name": "Nexus Mods",
           "format_game_name": "true",
           "icon": "https://raw.githubusercontent.com/diemonic1/Custom-buttons/refs/heads/main/PUBLIC_ICONS/nexusMods.png",
@@ -103,7 +121,11 @@ const DEFAULT_SETTINGS: PluginSettings = {
         }
       ],
       "top_buttons_style": ".millennium-custom-buttons {\\n  margin-right: 9px;\\n  padding: 0px 3px;\\n  border-radius: 2px;\\n  height: 24px;\\n  background-color: rgba(103, 112, 123, 0.2);\\n  color: #8b929a; \\n  transition: all 0.4s;\\n}\\n\\n.millennium-custom-buttons:hover {\\n  background-color: rgba(103, 112, 123, 0.5);\\n}\\n\\n.millennium-custom-buttons-inner-div {\\n  z-index: 1000;\\n  pointer-events: auto;\\n  -webkit-app-region: no-drag;\\n  user-select: none;\\n  display: flex;\\n  align-items: center;\\n  padding: 0px 5px;\\n  cursor: pointer;\\n}\\n\\n.millennium-custom-buttons-img {\\n  width: 18px;\\n  height: 18px;\\n}\\n\\n.millennium-custom-buttons-img-with-margin {\\n  margin-top: 3px;\\n  width: 18px;\\n  height: 18px;\\n}\\n\\n.millennium-custom-buttons-text-with-margin {\\n  margin-left: 5px;\\n}\\n"
-    }`
+    }`;
+
+const DEFAULT_SETTINGS: PluginSettings = {
+  language: "English",
+  settings_json: DEFAULT_SETTINGS_JSON
 };
 
 export function getSettings(): PluginSettings {
